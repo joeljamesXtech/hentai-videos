@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Video Player</title>
 </head>
 <body>
-  <h1>Video from API</h1>
-  <video url="video_1" width="640" height="360" controls>
+  <h1>Video Player</h1>
+  <video id="videoPlayer" width="640" height="360" controls>
     Your browser does not support the video tag.
   </video>
 
   <script>
-    // Fetch the video URL from the API
-    fetch('https://apis.davidcyriltech.my.id/hentai')
+    fetch("https://apis.davidcyriltech.my.id/hentai")
       .then(response => response.json())
       .then(data => {
-        const videoUrl = data["video_1"];
-        const videoPlayer = document.getElementById("video_1");
-        videoPlayer.src = video_1;
-        videoPlayer.type = "video/mp4";
+        const videoUrl = data.video_1;
+        const videoElement = document.getElementById("videoPlayer");
+        videoElement.src = videoUrl;
       })
       .catch(error => {
-        console.error("Error fetching video:", error);
+        console.error("Error loading video:", error);
       });
   </script>
 </body>
-</html>
+  </html>
