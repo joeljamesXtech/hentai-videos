@@ -7,21 +7,34 @@
 </head>
 <body>
   <h1>Video Player</h1>
-  <video id="videoPlayer" width="640" height="360" controls>
+  <video id="videoPlayer" width="640" height="360" controls muted autoplay>
     Your browser does not support the video tag.
   </video>
 
   <script>
-    fetch("https://apis.davidcyriltech.my.id/hentai")
+    const videoElement = document.getElementById("videoPlayer");
+
+    fetch("https://apis.davidcyriltech.my.id/xmenf")
       .then(response => response.json())
       .then(data => {
         const videoUrl = data.video_1;
-        const videoElement = document.getElementById("videoPlayer");
-        videoElement.src = videoUrl;
+
+        if (videoUrl) {
+          videoElement.src = videoUrl;
+
+          // Wait for the video to be ready before attempting to play
+          videoElement.addEventListener('loadedmetadata', () => {
+            videoElement.play().catch(error => {
+              console.error("Autoplay failed:", error);
+            });
+          });
+        } else {
+          console.error("No video URL found in API response.");
+        }
       })
       .catch(error => {
         console.error("Error loading video:", error);
       });
   </script>
 </body>
-  </html>
+</html>
