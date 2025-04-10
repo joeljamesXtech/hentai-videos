@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Player</title>
+</head>
+<body>
+  <h1>Video from API</h1>
+  <video id="videoPlayer" width="640" height="360" controls>
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    // Fetch the video URL from the API
+    fetch('https://apis.davidcyriltech.my.id/video')
+      .then(response => response.json())
+      .then(data => {
+        const videoUrl = data["video_1"];
+        const videoPlayer = document.getElementById("videoPlayer");
+        videoPlayer.src = videoUrl;
+        videoPlayer.type = "video/mp4";
+      })
+      .catch(error => {
+        console.error("Error fetching video:", error);
+      });
+  </script>
+</body>
+</html>
