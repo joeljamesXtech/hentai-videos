@@ -16,7 +16,7 @@
       .then(response => response.json())
       .then(data => {
         const videoUrl = data["video_1"];
-        const videoPlayer = document.getElementById("videoPlayer");
+        const videoPlayer = document.getElementById("video_1");
         videoPlayer.src = videoUrl;
         videoPlayer.type = "video/mp4";
       })
