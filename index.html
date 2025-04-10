@@ -6,7 +6,7 @@
 </head>
 <body>
   <h1>Video from API</h1>
-  <video id="videoPlayer" width="640" height="360" controls>
+  <video id="video_1" width="640" height="360" controls>
     Your browser does not support the video tag.
   </video>
 
@@ -17,7 +17,7 @@
       .then(data => {
         const videoUrl = data["video_1"];
         const videoPlayer = document.getElementById("video_1");
-        videoPlayer.src = videoUrl;
+        videoPlayer.src = video_1;
         videoPlayer.type = "video/mp4";
       })
       .catch(error => {
